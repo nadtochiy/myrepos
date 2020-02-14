@@ -14,14 +14,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', 'AboutController@about'
-);
+Route::get('/about', 'AboutController@about');
 
 Route::get('/main', 'BlogController@index');
 
 Route::get('/show/{blog}', 'BlogController@show')->name('blog.show');
 
 Route::get('/add', function () {
-    return view('add'); });
-Route::post('/create', 'BlogController@insert'
-);
+    return view('add');
+});
+Route::post('/create', 'BlogController@insert');
