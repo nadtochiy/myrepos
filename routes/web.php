@@ -24,3 +24,9 @@ Route::get('/add', function () {
     return view('add');
 });
 Route::post('/create', 'BlogController@insert');
+
+Route::post('/fred/{blog}', 'BlogController@change')->name('blog.change');
+
+Route::get('/redact/{blog}', 'BlogController@red')->name('blog.red');
+
+Route::get('/delete/{blog}', 'BlogController@delete')->name('blog.del');

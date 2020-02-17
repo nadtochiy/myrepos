@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App;
 use App\Models\Blog;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
     public function index()
     {
         $blogs = Blog::query()->paginate(3);
-//        foreach ($blogs as $b) {
-//            $b['content'] = mb_strimwidth($b['content'], 0, 140, "...");
-//        }
         return view('main', compact('blogs'));
     }
 
@@ -21,10 +19,24 @@ class BlogController extends Controller
         return view('show', compact('blog'));
     }
 
-    public function insert($stat)
+    public function insert(Request $request)
     {
-        $title = $stat['title'];
-        $content = $stat['content'];
-        DB::insert('insert into blogs (title, content) values({$title},{$content})');
+        Blog::create($request->all());
+        return redirect()->back();
+    }
+    public function red(Blog $blog)
+    {
+        return view('redact', compact('blog'));
+    }
+    public function change(Blog $blog, Request $request)
+    {
+        $blog->fill($request->all());
+        $blog->save();
+        return redirect()->back();
+    }
+    public function delete(Blog $blog)
+    {
+        $blog->delete();
+        return redirect()->back();
     }
 }

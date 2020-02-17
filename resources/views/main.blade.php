@@ -1,21 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-@foreach($blogs as $blog)
-    {{$blog['title']}}
-    <br>
-    {{$blog['content']}}
-    <a href="{{route('blog.show', $blog)}}">Перейти к статье</a>
-    <hr>
-@endforeach
-{{$blogs->links()}}
-<a href="/add">создать статью</a>
-</body>
-</html>
+@extends('teamplate.shablon')
+@section('content')
+    @foreach($blogs as $blog)
+        {{$blog['title']}}
+        <br>
+        {{$blog['content'] = mb_strimwidth($blog['content'], 0, 140, "...")}}
+        <br>
+        <a href="{{route('blog.show', $blog)}}">Перейти к статье</a>
+        <a href="{{route('blog.red', $blog)}}">Редактировть статью</a>
+        <a href="{{route('blog.del', $blog)}}">Удалить статью</a>
+        <hr>
+    @endforeach
+    {{$blogs->links()}}
+    <a href="/add">создать статью</a>
+@endsection
