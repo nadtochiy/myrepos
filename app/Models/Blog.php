@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    public $fillable = ['title', 'content'];
+    public $fillable = ['title', 'content', 'user_id'];
 
     protected $routeName = 'blog.show';
     public function link(){

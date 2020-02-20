@@ -6,6 +6,7 @@ use App;
 use App\Http\Request\BlogRequest;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -24,7 +25,9 @@ class BlogController extends Controller
 
     public function insert(BlogRequest $request)
     {
-        Blog::create($request->validated());
+        $stat = Blog::create($request->validated());
+        $stat->fill(['user_id' => Auth::id()]);
+        $stat->save();
         return redirect()->back();
     }
 

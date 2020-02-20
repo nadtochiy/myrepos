@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Содержание статьи</label>
-            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{old('title')}}</textarea>
+            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{old('content')}}</textarea>
             @error('content')
             <div class="text-danger">{{ $message }}</div>
             @enderror
