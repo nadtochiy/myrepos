@@ -12,15 +12,14 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::query()->paginate(3);
-        return view('main', compact('blogs'));
+        $blogs = Blog::query()->latest()->paginate(3);
+        return view('main', ['blogs' => $blogs]);
     }
 
     public function show(Blog $blog)
     {
-        return view('show', compact('blog'));
+        return view('show', ['blog' => $blog]);
     }
-
 
 
     public function insert(BlogRequest $request)

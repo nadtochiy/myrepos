@@ -10,7 +10,6 @@
             @enderror
         </div>
 
-
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Содержание статьи</label>
             <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{old('content')}}</textarea>
@@ -18,6 +17,10 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <input type="date" name="postdate">
+        <br>
+        <br>
 
         <input class="btn btn-primary" type="submit" name="Submit" value="Отправить">
         <br>
